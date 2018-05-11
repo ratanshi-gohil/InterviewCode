@@ -29,13 +29,55 @@ namespace InterviewCode.RecordsApi.Tests
         }
 
         [TestMethod]
-        public void SortyByGenderTest()
+        public void SortRecordsByGenderTest()
         {
             RecordsController recordsController = new RecordsController(_mockRecordService.Object);
             List<RecordDto> recordsDto = recordsController.Gender();
             
             Assert.AreEqual("Female", recordsDto[0].Gender);
         }
+
+        
+
+        [TestMethod]
+        public void SortRecordsByBirthDayTest()
+        {
+            RecordsController recordsController = new RecordsController(_mockRecordService.Object);
+            List<RecordDto> recordsDto = recordsController.Birthdate();
+
+            Assert.AreEqual("Jobs", recordsDto[0].LastName);
+
+        }
+
+        [TestMethod]
+        public void SortRecordsByNameTest()
+        {
+            RecordsController recordsController = new RecordsController(_mockRecordService.Object);
+            List<RecordDto> recordsDto = recordsController.Name();
+
+            Assert.AreEqual("Gates", recordsDto[0].LastName);
+        }
+
+        [TestMethod]
+        public void SaveRecordTest()
+        {
+            RecordsController recordsController = new RecordsController(_mockRecordService.Object);
+            RecordDto recordDto = new RecordDto()
+            {
+                LastName = "Gates",
+                FirstName = "Bill",
+                Gender = "Male",
+                FavoriteColor = "Blue",
+                DateOfBirth = "10/28/1955"
+            };
+            var success = recordsController.Post(recordDto);
+
+            Assert.IsTrue(success);
+
+
+        }
+
+        #region Private methods
 
         private RecordDto GenerateRecordtoSave()
         {
@@ -48,7 +90,7 @@ namespace InterviewCode.RecordsApi.Tests
                 DateOfBirth = "10/28/1955"
             };
         }
-
+        
         private RecordEntity GenerateRecordIdentityToSave()
         {
             return new RecordEntity()
@@ -93,43 +135,6 @@ namespace InterviewCode.RecordsApi.Tests
 
             return recordsDto;
         }
-
-        [TestMethod]
-        public void SortyByBirthDayTest()
-        {
-            RecordsController recordsController = new RecordsController(_mockRecordService.Object);
-            List<RecordDto> recordsDto = recordsController.Birthdate();
-
-            Assert.AreEqual("Jobs", recordsDto[0].LastName);
-
-        }
-
-        [TestMethod]
-        public void SortyByNameTest()
-        {
-            RecordsController recordsController = new RecordsController(_mockRecordService.Object);
-            List<RecordDto> recordsDto = recordsController.Name();
-
-            Assert.AreEqual("Gates", recordsDto[0].LastName);
-        }
-
-        [TestMethod]
-        public void SaveRecordTest()
-        {
-            RecordsController recordsController = new RecordsController(_mockRecordService.Object);
-            RecordDto recordDto = new RecordDto()
-            {
-                LastName = "Gates",
-                FirstName = "Bill",
-                Gender = "Male",
-                FavoriteColor = "Blue",
-                DateOfBirth = "10/28/1955"
-            };
-            var success = recordsController.Post(recordDto);
-
-            Assert.IsTrue(success);
-
-
-        }
+        #endregion
     }
 }

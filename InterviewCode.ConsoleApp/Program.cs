@@ -14,13 +14,19 @@ namespace InterviewCode.ConsoleApp
         static void Main(string[] args)
         {
             bool continueProgram = true;
+
+            //continue program first time
             while (continueProgram)
             {
+                //Read user input for file type which needs parsed
                 var inputFileType = ReadUserInputType();
+
+                //Parse input file
                 var dtoRecords = ParseInputFile(inputFileType);
 
                 if (dtoRecords != null)
                 {
+                    //Display three diffeerent views of records on user console
                     DisplayRecords(dtoRecords, Enums.SortType.GenderAndLastNameAsc);
                     DisplayRecords(dtoRecords, Enums.SortType.BirthDateAsc);
                     DisplayRecords(dtoRecords, Enums.SortType.LastNameDesc);
@@ -29,11 +35,14 @@ namespace InterviewCode.ConsoleApp
                 {
                     Console.WriteLine("No records found");
                 }
+                //Seek user input for re-running the program
                 continueProgram = ReRunUserChoice();
             }
 
         }
 
+        #region Private methods
+        //This function Seeks user input for re-running the program
         private static bool ReRunUserChoice()
         {
             Console.WriteLine("Do you want to re-run program? Press 'Y' to continue, any other key to exit");
@@ -45,6 +54,7 @@ namespace InterviewCode.ConsoleApp
                 return false;
         }
 
+        //This function displays parsed records on user console
         private static void DisplayRecords(List<RecordDto> recordsDto, Enums.SortType sortType)
         {
 
@@ -70,6 +80,7 @@ namespace InterviewCode.ConsoleApp
 
         }
 
+        //this function seeks user input for type of file which needs processed
         private static Enums.InputFileType ReadUserInputType()
         {
             try
@@ -102,6 +113,7 @@ namespace InterviewCode.ConsoleApp
 
         }
 
+        //this function parses input file
         private static List<RecordDto> ParseInputFile(Enums.InputFileType inputType)
         {
             try
@@ -136,6 +148,7 @@ namespace InterviewCode.ConsoleApp
 
         }
 
+        //this function sorts parsed records
         private static List<RecordDto> SortRecords(List<RecordDto> recordsDto, Enums.SortType sortType)
         {
             try
@@ -162,6 +175,7 @@ namespace InterviewCode.ConsoleApp
             }
         }
 
+        //This function validated user key input
         private static bool ValidateUserSelection(ConsoleKeyInfo consoleKeyInfo)
         {
             if (consoleKeyInfo.Key.Equals(ConsoleKey.D1) || consoleKeyInfo.Key.Equals(ConsoleKey.D2) || consoleKeyInfo.Key.Equals(ConsoleKey.D3))
@@ -169,5 +183,7 @@ namespace InterviewCode.ConsoleApp
             else
                 return false;
         }
+
+        #endregion
     }
 }
