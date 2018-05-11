@@ -287,6 +287,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InterviewCode.Common\InterviewCode.Common.csproj">
+      <Project>{F2FE08B9-37EC-4474-B226-EDB0B54F3592}</Project>
+      <Name>InterviewCode.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterviewCode.Dto\InterviewCode.Dto.csproj">
       <Project>{E3EBC8FC-43F7-46E9-BAE8-880E331AEDD1}</Project>
       <Name>InterviewCode.Dto</Name>

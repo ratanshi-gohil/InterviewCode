@@ -1,4 +1,5 @@
-﻿using InterviewCode.Dto;
+﻿using InterviewCode.Common;
+using InterviewCode.Dto;
 using InterviewCode.Repository;
 using InterviewCode.Service;
 using System;
@@ -29,7 +30,8 @@ namespace InterviewCode.RecordsApi.Controllers
         [Route("Gender")]
         public List<RecordDto> Gender()
         {
-            return _recordService.GetAllrecords().OrderBy(p => p.Gender).ToList();
+            return BusinessLogic.SortRecords(_recordService.GetAllrecords(), Enums.SortType.GenderAndLastNameAsc);
+            //return _recordService.GetAllrecords().OrderBy(p => p.Gender).ToList();
         }
 
         // GET: records/birthdate
@@ -37,14 +39,16 @@ namespace InterviewCode.RecordsApi.Controllers
         [Route("Birthdate")]
         public List<RecordDto> Birthdate()
         {
-            return _recordService.GetAllrecords().OrderBy(p => Convert.ToDateTime(p.DateOfBirth)).ToList();
+            return BusinessLogic.SortRecords(_recordService.GetAllrecords(), Enums.SortType.BirthDateAsc);
+            //return _recordService.GetAllrecords().OrderBy(p => Convert.ToDateTime(p.DateOfBirth)).ToList();
         }
         // GET: Records/name
         [HttpGet]
         [Route("Name")]
         public List<RecordDto> Name()
         {
-            return _recordService.GetAllrecords().OrderBy(p => p.FirstName).ToList();
+            return BusinessLogic.SortRecords(_recordService.GetAllrecords(), Enums.SortType.LastNameDesc);
+            //return _recordService.GetAllrecords().OrderBy(p => p.FirstName).ToList();
         }
 
         // POST: Records

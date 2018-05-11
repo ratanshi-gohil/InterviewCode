@@ -40,7 +40,7 @@ namespace InterviewCode.ConsoleApp
         private static void DisplayRecords(List<RecordDto> recordsDto, Enums.SortType sortType)
         {
 
-            List<RecordDto> sortedRecords = SortRecords(recordsDto, sortType);
+            List<RecordDto> sortedRecords = BusinessLogic.SortRecords(recordsDto, sortType);
             try
             {
                 if (sortedRecords != null)
@@ -128,33 +128,6 @@ namespace InterviewCode.ConsoleApp
                 throw ex;
             }
 
-        }
-
-        //this function sorts parsed records
-        private static List<RecordDto> SortRecords(List<RecordDto> recordsDto, Enums.SortType sortType)
-        {
-            try
-            {
-                List<RecordDto> sortedRecords = null;
-                if (sortType.Equals(Enums.SortType.GenderAndLastNameAsc))
-                {
-                    sortedRecords = recordsDto.OrderBy(i => i.Gender).ThenBy(i => i.LastName).ToList();
-                }
-                else if (sortType.Equals(Enums.SortType.BirthDateAsc))
-                {
-                    sortedRecords = recordsDto.OrderBy(i => Convert.ToDateTime(i.DateOfBirth)).ToList();
-                }
-                else if (sortType.Equals(Enums.SortType.LastNameDesc))
-                {
-                    sortedRecords = recordsDto.OrderByDescending(i => i.LastName).ToList();
-                }
-                return sortedRecords;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error while executing SortRecords");
-                throw ex;
-            }
         }
 
         //This function validated user key input
