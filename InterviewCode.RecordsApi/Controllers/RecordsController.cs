@@ -1,4 +1,7 @@
-﻿using System;
+﻿using InterviewCode.Dto;
+using InterviewCode.Repository;
+using InterviewCode.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,33 +10,50 @@ using System.Web.Http;
 
 namespace InterviewCode.RecordsApi.Controllers
 {
+    [RoutePrefix("Records")]
     public class RecordsController : ApiController
     {
-        // GET: Records
-        public IEnumerable<string> Get()
+        IRecordService _recordService;
+        public RecordsController(IRecordService recordService)
         {
-            return new string[] { "value1", "value2" };
+            _recordService = recordService;
         }
 
-        // GET: Records/5
-        public string Get(int id)
+        public RecordsController()
         {
-            return "value";
+            _recordService = new RecordService(new RecordRepository());
+        }
+
+
+        // GET: records/gender
+        [HttpGet]
+        [Route("Gender")]
+        public IEnumerable<RecordDto> Gender()
+        {
+            return _recordService.GetAllrecords().OrderBy(p => p.Gender);
+        }
+
+        // GET: records/birthdate
+        [HttpGet]
+        [Route("Birthdate")]
+        public IEnumerable<RecordDto> Birthdate()
+        {
+            return _recordService.GetAllrecords().OrderBy(p => p.DateOfBirth);
+        }
+        // GET: Records/name
+        [HttpGet]
+        [Route("Name")]
+        public IEnumerable<RecordDto> Name()
+        {
+            return _recordService.GetAllrecords().OrderBy(p => p.FirstName);
         }
 
         // POST: Records
-        public void Post([FromBody]string value)
+        public void Post([FromBody]RecordDto recordDto)
         {
+            _recordService.SaveRecord(recordDto);
         }
 
-        // PUT: Records/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
-        // DELETE: Records/5
-        public void Delete(int id)
-        {
-        }
     }
 }

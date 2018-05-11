@@ -10,5 +10,6 @@ namespace InterviewCode.Repository
     public interface IRecordRepository
     {
         List<RecordEntity> RecordEntities();
+        bool InsertRecord(RecordEntity recordEntity);
     }
 }

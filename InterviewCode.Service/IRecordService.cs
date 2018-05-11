@@ -10,5 +10,6 @@ namespace InterviewCode.Service
     public interface IRecordService
     {
         List<RecordDto> GetAllrecords();
+        bool SaveRecord(RecordDto recordDto);
     }
 }

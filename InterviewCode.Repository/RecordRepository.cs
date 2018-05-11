@@ -9,11 +9,22 @@ namespace InterviewCode.Repository
 {
     public class RecordRepository : IRecordRepository
     {
+        public RecordRepository() { }
+
+        public bool InsertRecord(RecordEntity recordEntity)
+        {
+            int ID = 1;
+            string line = string.Format("{0}|{1}|{2}|{3}|{4}|{5}", ID, recordEntity.LastName, recordEntity.FirstName, recordEntity.Gender, recordEntity.FavoriteColor, recordEntity.DateOfBirth);
+            return true;
+        }
+
         public List<RecordEntity> RecordEntities()
         {
+            int ID = 0;
             List<RecordEntity> recordEntities = new List<RecordEntity>();
             recordEntities.Add(new RecordEntity()
             {
+                ID = ID++,
                 LastName = "Gates",
                 FirstName = "Bill",
                 Gender = "Male",
@@ -22,6 +33,7 @@ namespace InterviewCode.Repository
             });
             recordEntities.Add(new RecordEntity()
             {
+                ID = ID++,
                 LastName = "Nooyi",
                 FirstName = "Indra",
                 Gender = "Female",
@@ -30,6 +42,7 @@ namespace InterviewCode.Repository
             });
             recordEntities.Add(new RecordEntity()
             {
+                ID = ID++,
                 LastName = "Jobs",
                 FirstName = "Steve",
                 Gender = "Male",

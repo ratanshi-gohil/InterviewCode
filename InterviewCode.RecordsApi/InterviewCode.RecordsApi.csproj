@@ -278,6 +278,20 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterviewCode.Dto\InterviewCode.Dto.csproj">
+      <Project>{E3EBC8FC-43F7-46E9-BAE8-880E331AEDD1}</Project>
+      <Name>InterviewCode.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterviewCode.Repository\InterviewCode.Repository.csproj">
+      <Project>{57D6F6C3-11AC-4ADA-B684-F467485701A6}</Project>
+      <Name>InterviewCode.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterviewCode.Service\InterviewCode.Service.csproj">
+      <Project>{AEABAECC-417B-4627-BD23-C9247E6EAA5D}</Project>
+      <Name>InterviewCode.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

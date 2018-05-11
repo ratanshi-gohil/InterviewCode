@@ -16,6 +16,9 @@ namespace InterviewCode.Service
             _recordRepository = recordRepository;
 
         }
+
+        public RecordService() { }
+
         public List<RecordDto> GetAllrecords()
         {
             var dtoRecords = (from entities in _recordRepository.RecordEntities()
@@ -29,6 +32,18 @@ namespace InterviewCode.Service
                               }).ToList();
 
             return dtoRecords;
+        }
+
+        public bool SaveRecord(RecordDto recordDto)
+        {
+            return _recordRepository.InsertRecord(new Data.RecordEntity()
+            {
+                LastName = recordDto.LastName,
+                FirstName = recordDto.FirstName,
+                Gender = recordDto.Gender,
+                DateOfBirth = Convert.ToDateTime(recordDto.DateOfBirth),
+                FavoriteColor = recordDto.FavoriteColor
+            });
         }
     }
 }
