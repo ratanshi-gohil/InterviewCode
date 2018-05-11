@@ -31,7 +31,6 @@ namespace InterviewCode.RecordsApi.Controllers
         public List<RecordDto> Gender()
         {
             return BusinessLogic.SortRecords(_recordService.GetAllrecords(), Enums.SortType.GenderAndLastNameAsc);
-            //return _recordService.GetAllrecords().OrderBy(p => p.Gender).ToList();
         }
 
         // GET: records/birthdate
@@ -40,7 +39,6 @@ namespace InterviewCode.RecordsApi.Controllers
         public List<RecordDto> Birthdate()
         {
             return BusinessLogic.SortRecords(_recordService.GetAllrecords(), Enums.SortType.BirthDateAsc);
-            //return _recordService.GetAllrecords().OrderBy(p => Convert.ToDateTime(p.DateOfBirth)).ToList();
         }
         // GET: Records/name
         [HttpGet]
@@ -48,7 +46,6 @@ namespace InterviewCode.RecordsApi.Controllers
         public List<RecordDto> Name()
         {
             return BusinessLogic.SortRecords(_recordService.GetAllrecords(), Enums.SortType.LastNameDesc);
-            //return _recordService.GetAllrecords().OrderBy(p => p.FirstName).ToList();
         }
 
         // POST: Records
