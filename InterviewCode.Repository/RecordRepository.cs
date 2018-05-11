@@ -9,19 +9,17 @@ namespace InterviewCode.Repository
 {
     public class RecordRepository : IRecordRepository
     {
-        public RecordRepository() { }
+        List<RecordEntity> recordEntities;
 
-        public bool InsertRecord(RecordEntity recordEntity)
+        public RecordRepository()
         {
-            int ID = 1;
-            string line = string.Format("{0}|{1}|{2}|{3}|{4}|{5}", ID, recordEntity.LastName, recordEntity.FirstName, recordEntity.Gender, recordEntity.FavoriteColor, recordEntity.DateOfBirth);
-            return true;
+            PopulateRecordEntities();
         }
 
-        public List<RecordEntity> RecordEntities()
+        private void PopulateRecordEntities()
         {
+            recordEntities = new List<RecordEntity>();
             int ID = 0;
-            List<RecordEntity> recordEntities = new List<RecordEntity>();
             recordEntities.Add(new RecordEntity()
             {
                 ID = ID++,
@@ -49,7 +47,50 @@ namespace InterviewCode.Repository
                 FavoriteColor = "White",
                 DateOfBirth = new DateTime(1955, 2, 24)
             });
+        }
 
+        public bool InsertRecord(RecordEntity recordEntity)
+        {
+            RecordEntity existingRecordEntity = recordEntities.Find(p => p.ID.Equals(recordEntity.ID));
+            if (existingRecordEntity != null)
+            {
+                UpdateRecord(recordEntity);
+            }
+            else
+            {
+                recordEntities.Add(new RecordEntity()
+                {
+                    ID = 1,
+                    LastName = recordEntity.LastName,
+                    FirstName = recordEntity.FirstName,
+                    Gender = recordEntity.Gender,
+                    FavoriteColor = recordEntity.FavoriteColor,
+                    DateOfBirth = recordEntity.DateOfBirth
+                });
+            }
+            return true;
+        }
+
+        public bool UpdateRecord(RecordEntity recordEntity)
+        {
+            if (recordEntities != null)
+            {
+                RecordEntity existingRecordEntity = recordEntities.Find(p => p.ID.Equals(recordEntity.ID));
+                if (existingRecordEntity != null)
+                {
+                    existingRecordEntity.LastName = recordEntity.LastName;
+                    existingRecordEntity.FirstName = recordEntity.FirstName;
+                    existingRecordEntity.Gender = recordEntity.Gender;
+                    existingRecordEntity.FavoriteColor = recordEntity.FavoriteColor;
+                    existingRecordEntity.DateOfBirth = recordEntity.DateOfBirth;
+                }
+            }
+            return true;
+        }
+
+        public List<RecordEntity> RecordEntities()
+        {
+            
             return recordEntities;
         }
     }
