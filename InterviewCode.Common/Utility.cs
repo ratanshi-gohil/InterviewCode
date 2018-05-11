@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterviewCode.Common
 {
-    public class Utility
+    public static class Utility
     {
     }
 }
