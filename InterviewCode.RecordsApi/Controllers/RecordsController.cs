@@ -28,30 +28,30 @@ namespace InterviewCode.RecordsApi.Controllers
         // GET: records/gender
         [HttpGet]
         [Route("Gender")]
-        public IEnumerable<RecordDto> Gender()
+        public List<RecordDto> Gender()
         {
-            return _recordService.GetAllrecords().OrderBy(p => p.Gender);
+            return _recordService.GetAllrecords().OrderBy(p => p.Gender).ToList();
         }
 
         // GET: records/birthdate
         [HttpGet]
         [Route("Birthdate")]
-        public IEnumerable<RecordDto> Birthdate()
+        public List<RecordDto> Birthdate()
         {
-            return _recordService.GetAllrecords().OrderBy(p => p.DateOfBirth);
+            return _recordService.GetAllrecords().OrderBy(p => Convert.ToDateTime(p.DateOfBirth)).ToList();
         }
         // GET: Records/name
         [HttpGet]
         [Route("Name")]
-        public IEnumerable<RecordDto> Name()
+        public List<RecordDto> Name()
         {
-            return _recordService.GetAllrecords().OrderBy(p => p.FirstName);
+            return _recordService.GetAllrecords().OrderBy(p => p.FirstName).ToList();
         }
 
         // POST: Records
-        public void Post([FromBody]RecordDto recordDto)
+        public bool Post([FromBody]RecordDto recordDto)
         {
-            _recordService.SaveRecord(recordDto);
+            return _recordService.SaveRecord(recordDto);
         }
 
 
