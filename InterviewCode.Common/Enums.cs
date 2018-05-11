@@ -17,7 +17,7 @@ namespace InterviewCode.Common
             SpaceDelimited = 3,
         }
 
-        public enum ViewType
+        public enum SortType
         {
             [Description("gender (females before males) then by last name ascending")]
             GenderAndLastNameAsc = 0,

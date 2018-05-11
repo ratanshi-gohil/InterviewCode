@@ -59,5 +59,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterviewCode.Common\InterviewCode.Common.csproj">
+      <Project>{F2FE08B9-37EC-4474-B226-EDB0B54F3592}</Project>
+      <Name>InterviewCode.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterviewCode.Dto\InterviewCode.Dto.csproj">
+      <Project>{e3ebc8fc-43f7-46e9-bae8-880e331aedd1}</Project>
+      <Name>InterviewCode.Dto</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
