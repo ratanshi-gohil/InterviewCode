@@ -21,7 +21,6 @@ namespace InterviewCode.RecordsApi.Controllers
 
         public RecordsController()
         {
-            _recordService = new RecordService(new RecordRepository());
         }
 
 
