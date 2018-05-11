@@ -24,6 +24,7 @@ namespace InterviewCode.RecordsApi.Tests
             _mockRecordService.Setup(s => s.SaveRecord(GenerateRecordtoSave())).Returns(true);
 
             _mockRecordRepository = new Mock<IRecordRepository>();
+            _mockRecordRepository.Setup(s => s.UpdateRecord(GenerateRecordIdentityToSave())).Returns(true);
             _mockRecordRepository.Setup(s => s.InsertRecord(GenerateRecordIdentityToSave())).Returns(true);
 
         }

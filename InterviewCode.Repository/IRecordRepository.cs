@@ -11,5 +11,6 @@ namespace InterviewCode.Repository
     {
         List<RecordEntity> RecordEntities();
         bool InsertRecord(RecordEntity recordEntity);
+        bool UpdateRecord(RecordEntity recordEntity);
     }
 }
