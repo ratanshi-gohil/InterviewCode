@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace InterviewCode.RecordsApi.Controllers
 {
+    //Home Controller left intentionally so that web api renders default view when run
     public class HomeController : Controller
     {
         public ActionResult Index()

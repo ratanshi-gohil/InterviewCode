@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace InterviewCode.RecordsApi.Controllers
 {
+    //Values Controller left intentionally so that web api renders default view when run
     public class ValuesController : ApiController
     {
         // GET api/values
