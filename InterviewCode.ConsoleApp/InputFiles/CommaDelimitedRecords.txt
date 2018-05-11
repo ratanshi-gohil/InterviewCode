@@ -1,0 +1,3 @@
+Gates,Bill,Male,Blue,10/28/1955
+Nooyi,Indra,Female,black,10/28/1955
+Jobs,Steve,Male,White,2/24/1955
