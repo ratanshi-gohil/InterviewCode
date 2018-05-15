@@ -22,7 +22,7 @@ namespace InterviewCode.Repository
             int ID = 0;
             recordEntities.Add(new RecordEntity()
             {
-                ID = ID++,
+                ID = ++ID,
                 LastName = "Gates",
                 FirstName = "Bill",
                 Gender = "Male",
@@ -31,7 +31,7 @@ namespace InterviewCode.Repository
             });
             recordEntities.Add(new RecordEntity()
             {
-                ID = ID++,
+                ID = ++ID,
                 LastName = "Nooyi",
                 FirstName = "Indra",
                 Gender = "Female",
@@ -40,7 +40,7 @@ namespace InterviewCode.Repository
             });
             recordEntities.Add(new RecordEntity()
             {
-                ID = ID++,
+                ID = ++ID,
                 LastName = "Jobs",
                 FirstName = "Steve",
                 Gender = "Male",

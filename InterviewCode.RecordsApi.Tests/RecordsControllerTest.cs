@@ -24,7 +24,7 @@ namespace InterviewCode.RecordsApi.Tests
             _mockRecordService.Setup(s => s.SaveRecord(GenerateRecordtoSave())).Returns(true);
 
             _mockRecordRepository = new Mock<IRecordRepository>();
-            _mockRecordRepository.Setup(s => s.UpdateRecord(GenerateRecordIdentityToSave())).Returns(true);
+            _mockRecordRepository.Setup(s => s.UpdateRecord(GenerateRecordIdentityToSave())).Returns(false);
             _mockRecordRepository.Setup(s => s.InsertRecord(GenerateRecordIdentityToSave())).Returns(true);
 
         }
@@ -63,15 +63,9 @@ namespace InterviewCode.RecordsApi.Tests
         public void SaveRecordTest()
         {
             RecordsController recordsController = new RecordsController(_mockRecordService.Object);
-            RecordDto recordDto = new RecordDto()
-            {
-                LastName = "Gates",
-                FirstName = "Bill",
-                Gender = "Male",
-                FavoriteColor = "Blue",
-                DateOfBirth = "10/28/1955"
-            };
-            var success = recordsController.Post(recordDto);
+            
+            string recordDtoStr = "Jones,Andrew,Male,Purple,09/15/1975";
+            var success = recordsController.Post(recordDtoStr);
 
             Assert.IsTrue(success);
 

@@ -38,6 +38,7 @@ namespace InterviewCode.Service
         {
             return _recordRepository.InsertRecord(new Data.RecordEntity()
             {
+                ID = 4,
                 LastName = recordDto.LastName,
                 FirstName = recordDto.FirstName,
                 Gender = recordDto.Gender,

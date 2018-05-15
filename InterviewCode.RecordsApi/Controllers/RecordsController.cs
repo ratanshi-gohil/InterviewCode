@@ -49,11 +49,21 @@ namespace InterviewCode.RecordsApi.Controllers
         }
 
         // POST: Records
-        public bool Post([FromBody]RecordDto recordDto)
+        public bool Post([FromBody]string recordDtoString)
         {
+            Char[] seperators = new Char[] { ',', ' ', '|' };
+
+            var recordDtoArr = recordDtoString.Split(seperators);
+            RecordDto recordDto = new RecordDto()
+            {
+                LastName = recordDtoArr[0],
+                FirstName = recordDtoArr[1],
+                Gender = recordDtoArr[2],
+                FavoriteColor = recordDtoArr[3],
+                DateOfBirth = Convert.ToDateTime(recordDtoArr[4]).ToString("M/d/yyyy")
+            };
+
             return _recordService.SaveRecord(recordDto);
         }
-
-
     }
 }
